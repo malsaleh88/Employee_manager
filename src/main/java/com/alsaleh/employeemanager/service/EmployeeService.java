@@ -1,6 +1,7 @@
 package com.alsaleh.employeemanager.service;
 
 
+import com.alsaleh.employeemanager.exception.UserNotFoundException;
 import com.alsaleh.employeemanager.model.Employee;
 import com.alsaleh.employeemanager.repo.EmployeeRepo;
 import jakarta.servlet.http.PushBuilder;
@@ -34,7 +35,8 @@ public class EmployeeService {
     }
 
     public Employee findEmployeeById(Long id){
-        return employeeRepo.findEmployeeById(id);
+        return employeeRepo.findEmployeeById(id)
+                .orElseThrow(() -> new UserNotFoundException("User by id" + id + "was not found"));
     }
 
     public void deleteEmployee(Long id){
