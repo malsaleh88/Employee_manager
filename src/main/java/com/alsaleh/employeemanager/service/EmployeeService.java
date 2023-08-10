@@ -33,5 +33,13 @@ public class EmployeeService {
         return employeeRepo.save(employee);
     }
 
+    public Employee findEmployeeById(Long id){
+        return employeeRepo.findEmployeeById(id);
+    }
+
+    public void deleteEmployee(Long id){
+        employeeRepo.deleteEmployeeById(id);
+    }
+
 
 }
